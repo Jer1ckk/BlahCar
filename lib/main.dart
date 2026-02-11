@@ -1,7 +1,21 @@
-import 'package:blahblah/model/ride/ride.dart';
-import 'package:blahblah/services/rides_service.dart';
+import 'ui/screens/test_screen.dart';
+import 'package:blahblah/ui/theme/theme.dart';
+import 'package:flutter/material.dart';
 
-void main() {
-  List<Ride> available = RidesService.filterBySeatRequested(4);
-  print(available);
+void main(){
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: blaTheme,
+      debugShowCheckedModeBanner: false,
+      
+      home: TestScreen(),
+    );
+  }
 }
