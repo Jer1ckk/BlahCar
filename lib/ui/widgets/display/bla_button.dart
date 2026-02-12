@@ -7,11 +7,13 @@ class BlaButton extends StatelessWidget {
     this.isPrimary = true,
     required this.text,
     this.iconData,
+    required this.onTap,
   });
 
   final bool isPrimary;
   final String text;
   final IconData? iconData;
+  final VoidCallback onTap;
 
   Color get buttonColor => isPrimary ? BlaColors.primary : BlaColors.white;
   Color get textAndIconColor => isPrimary ? BlaColors.white : BlaColors.primary;
@@ -25,19 +27,22 @@ class BlaButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: buttonColor,
         borderRadius: BorderRadius.circular(BlaSpacings.radius),
-        border: Border.all(color: BlaColors.greyLight ),
+        border: Border.all(color: BlaColors.greyLight),
       ),
 
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        spacing: 20,
-        children: [
-          if (hasIcon) Icon(iconData, color: textAndIconColor),
-          Text(
-            text,
-            style: BlaTextStyles.button.copyWith(color: textAndIconColor),
-          ),
-        ],
+      child: GestureDetector(
+        onTap: onTap,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          spacing: 20,
+          children: [
+            if (hasIcon) Icon(iconData, color: textAndIconColor),
+            Text(
+              text,
+              style: BlaTextStyles.button.copyWith(color: textAndIconColor),
+            ),
+          ],
+        ),
       ),
     );
   }
