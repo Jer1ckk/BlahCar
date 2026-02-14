@@ -1,4 +1,4 @@
-import 'package:blahblah/ui/widgets/display/bla_button.dart';
+import 'package:blahblah/ui/widgets/actions/bla_button.dart';
 import 'package:flutter/material.dart';
 
 class TestScreen extends StatelessWidget {
@@ -12,17 +12,10 @@ class TestScreen extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              BlaButton(text: "Primary", iconData: Icons.calendar_month),
-              SizedBox(height: 10),
               BlaButton(
-                isPrimary: false,
-                text: "Secondary",
-                iconData: Icons.swap_vert_circle_sharp,
-              ),
-              SizedBox(height: 10),
-              BlaButton(
-                isPrimary: false,
-                text: "Secondary",
+                text: "Primary",
+                iconData: Icons.calendar_month,
+                onTap: () {},
               ),
             ],
           ),
@@ -31,5 +24,3 @@ class TestScreen extends StatelessWidget {
     );
   }
 }
-
-

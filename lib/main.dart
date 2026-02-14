@@ -1,4 +1,4 @@
-import 'package:blahblah/ui/screens/ride_preferences.dart';
+import 'package:blahblah/ui/screens/test_screen.dart';
 import 'package:blahblah/ui/theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: blaTheme,
       debugShowCheckedModeBanner: false,
       
-      home: RidePreferences(),
+      home: TestScreen(),
     );
   }
 }
