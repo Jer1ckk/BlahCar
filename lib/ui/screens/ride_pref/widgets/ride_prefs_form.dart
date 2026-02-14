@@ -1,3 +1,4 @@
+import 'package:blahblah/ui/screens/location_picker/location_picker_screen.dart';
 import 'package:blahblah/ui/widgets/actions/bla_button.dart';
 import 'package:blahblah/ui/widgets/display/bla_divider.dart';
 import 'package:flutter/material.dart';
@@ -60,11 +61,29 @@ class _RidePrefFormState extends State<RidePrefForm> {
   // ----------------------------------
 
   void onDeparturePressed() async {
-    print("pressed");
+    final selectedLocation = await Navigator.push<Location>(
+      context,
+      MaterialPageRoute(builder: (context) => const LocationPickerScreen()),
+    );
+
+    if (selectedLocation != null) {
+      setState(() {
+        departure = selectedLocation;
+      });
+    }
   }
 
   void onArrivalPressed() async {
-    print("pressed");
+    final selectedLocation = await Navigator.push<Location>(
+      context,
+      MaterialPageRoute(builder: (context) => const LocationPickerScreen()),
+    );
+
+    if (selectedLocation != null) {
+      setState(() {
+        arrival = selectedLocation;
+      });
+    }
   }
 
   void onSubmit() {
@@ -73,11 +92,11 @@ class _RidePrefFormState extends State<RidePrefForm> {
 
   void onSwappingLocationPressed() {
     setState(() {
-      if (departure != null || arrival != null) {
-        Location temp = departure!;
-        departure = arrival!;
-        arrival = temp;
-      }
+      final tempDeparture = departure;
+      final tempArrival = arrival;
+
+      departure = tempArrival; // can be null
+      arrival = tempDeparture; // can be null
     });
   }
 
@@ -94,7 +113,7 @@ class _RidePrefFormState extends State<RidePrefForm> {
   String get dateLabel => DateTimeUtils.formatDateTime(departureDate);
   String get numberLabel => requestedSeats.toString();
 
-  bool get switchVisible => arrival != null && departure != null;
+  bool get switchVisible => arrival != null || departure != null;
 
   // ----------------------------------
   // Build the widgets
