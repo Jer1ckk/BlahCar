@@ -83,3 +83,7 @@ ThemeData blaTheme = ThemeData(
   fontFamily: 'Eesti',
   scaffoldBackgroundColor: Colors.white,
 );
+
+class Blasize {
+  static const double icon = 24;
+}
